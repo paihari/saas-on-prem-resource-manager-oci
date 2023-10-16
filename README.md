@@ -48,13 +48,16 @@ If you don't have the required permissions and quota, contact your tenancy admin
 
 7. If no further changes are necessary, return to the Stack Details page, click **Terraform Actions**, and select **Apply**. 
 
+8. To destroy, Navigate to **Resource Manager >> Stacks >> Stack details** and click **Destroy**
+
+
 ## Deploy Using the Terraform CLI
 
 ### Clone the Repository
 Now, you'll want a local copy of this repo. You can make that with the commands:
 
-    git clone https://github.com/oracle-devrel/terraform-oci-arch-postgresql
-    cd terraform-oci-arch-postgresql
+    git clone https://github.com/paihari/terraform-oci-fullstack-windmill.git
+    cd terraform-oci-fullstack-windmill
     ls
 
 ### Prerequisites
@@ -80,19 +83,6 @@ compartment_ocid        = "<compartment_ocid>"
 
 # PostgreSQL Password
 postgresql_password     = "<postgresql_password>"
-
-# PostgreSQL Version (supported versions 9.6, 10, 11, 12, 13)
-postgresql_version      = "<postgresql_version>"
-
-# Optional first HotStandby 
-postgresql_deploy_hotstandby1 = true
-postgresql_hotstandby1_ad = "<availability_domain_name>" # for example GrCH:US-ASHBURN-AD-2
-postgresql_hotstandby1_fd = "<postgresql_hotstandby1_fd>" # for example FAULT-DOMAIN-2
-
-# Optional second HotStandby 
-postgresql_deploy_hotstandby2 = true
-postgresql_hotstandby2_ad = "<availability_domain_name>" # for example GrCH:US-ASHBURN-AD-3
-postgresql_hotstandby2_fd = "<postgresql_hotstandby2_fd>" # for example FAULT-DOMAIN-3
 
 ````
 
