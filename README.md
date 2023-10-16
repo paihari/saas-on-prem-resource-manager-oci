@@ -76,7 +76,7 @@ private_key_path     = "<pem_private_key_path>"
 region = "<oci_region>"
 
 # availability Domain 
-availability_domain_name = "<availability_domain_name>" # for example GrCH:US-ASHBURN-AD-1
+availability_domain= "<availability_domain>" # for example vWQc:EU-FRANKFURT-1-AD-1
 
 # Compartment
 compartment_ocid        = "<compartment_ocid>"
