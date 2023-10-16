@@ -98,8 +98,25 @@ When you no longer need the deployment, you can run this command to destroy the 
 
     terraform destroy
 
-## Deploy as a Module
-It's possible to utilize this repository as remote module, providing the necessary inputs:
+## Test the Stack
+Find the Public IP Address of the WindmillServer  by Navigating to **Developer Services >> Container Instances** 
+Navigate in the browser
+```
+http://PUBLIC-IP-ADDRESS-OF-WINDMILLSERVER:8000
+
+```
+
+Login using crdentials
+
+```
+admin@windmill.dev/changeme
+
+```
+
+
+
+
+
 
 ```
 module "arch-postgresql" {
