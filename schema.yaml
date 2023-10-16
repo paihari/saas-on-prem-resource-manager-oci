@@ -1,0 +1,121 @@
+title: "Create Full Windmill Stack on Oracle Cloud Infrastructure. "
+stackDescription: "Stack deploys the windmill server, windmill workers on the OCI Container Instance and deploys  three-node deployment of a High Available PostgreSQL database on Oracle Cloud Infrastructure Compute instances."
+schemaVersion: 1.1.0
+version: "20190404"
+locale: "en"
+
+variableGroups:
+  - title: General Configuration
+    visible: false
+    variables:
+    - tenancy_ocid
+    - region
+
+  - title: Required Configuration
+    variables:  
+    - compartment_ocid
+    - availability_domain
+    - windmill_vcn_cidr
+    - windmill_subnet_cidr
+    - postgresql_subnet_cidr
+    - postgresql_database_password
+    - container_restart_policy
+    - graceful_shutdown_timeout_in_seconds
+    - shape
+    - state
+   
+
+variables:
+  region:
+    type: oci:identity:region:name
+    required: true
+    visible: true
+    title: Region
+    description: "Region where you want to deploy the resources defined by this stack."
+
+  compartment_ocid:
+    type: oci:identity:compartment:id
+    required: true
+    visible: true
+    title: Compartment
+    description: "Compartment where you want to create the solution resources"
+
+  availability_domain:
+    type: oci:identity:availabilitydomain:name
+    required: true
+    visible: true
+    title: "Availability Domain "
+    description: "Availability Domain"
+    dependsOn:
+      compartmentId: ${compartment_ocid}
+  
+
+  windmill_vcn_cidr:
+    type: string
+    visible: true
+    required: true
+    pattern: "^(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\\/(3[0-2]|[1-2]?[0-9])$"
+    title: "Windmill VCN CIDR"
+    description: "Choose VCN CIDR for your Windmill deployments."
+    default: "10.1.0.0/16"   
+  
+  windmill_subnet_cidr:
+    type: string
+    visible: true
+    required: true
+    pattern: "^(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\\/(3[0-2]|[1-2]?[0-9])$"
+    title: "Windmill Application Subnet CIDR"
+    description: "Choose Subnet CIDR for your Windmill deployments."
+    default: "10.1.1.0/24"   
+
+  postgresql_subnet_cidr:
+    type: string
+    visible: true
+    required: true
+    pattern: "^(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\\/(3[0-2]|[1-2]?[0-9])$"
+    title: "Windmill Application Subnet CIDR"
+    description: "Choose Subnet CIDR for your Windmill deployments."
+    default: "10.1.20.0/24"   
+
+  postgresql_database_password:
+    type: password
+    required: true
+    visible: true
+    title: "PostgreSQL Password"
+    description: "The password must start with a letter, and it can contain letters (uppercase, lowercase), numbers, and the symbols _ $ #"        
+    minLength: 12
+    maxLength: 30
+    pattern: ^[A-Za-z][A-Za-z0-9_#\$]+$ 
+
+  container_restart_policy:  
+    type: string
+    required: true
+    visible: false
+    title: "Container Restart Policy"
+    description: "Container Restart Policy"     
+    default: "ALWAYS"  
+
+  graceful_shutdown_timeout_in_seconds:
+    type: integer
+    required: true
+    visible: false
+    title: "Graceful shutdown timeout in Seconds"
+    description: "Graceful shutdown timeout in Seconds"     
+    default: 0    
+
+  shape:
+    type: string
+    required: true
+    visible: false
+    title: "The shape of the container instance."
+    description: "The shape of the container instance. The shape determines the resources available to the container instance."     
+    default: "CI.Standard.E4.Flex"   
+
+  state:
+    type: string
+    required: true
+    visible: false
+    title: "The target state for the Container Instance"
+    description: "The target state for the Container Instance. Could be set to ACTIVE or INACTIVE."     
+    default: "ACTIVE"   
+

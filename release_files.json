@@ -1,0 +1,32 @@
+[
+    {
+      "action": "create_zip",
+      "file_name": "terraform-oci-fullstack-windmill.zip",
+      "files": [
+        {
+          "src_pattern": "*.tf",
+          "dst_path": ".",
+          "exclude": [
+            "provider.tf",
+            "variables.tf"
+          ]
+        },
+        {
+          "src": "schema.yaml",
+          "dst": "schema.yaml"
+        },
+        {
+          "src": "orm/variables.tf",
+          "dst": "variables.tf"
+        },
+        {
+          "src": "orm/provider.tf",
+          "dst": "provider.tf"
+        }         
+      ]
+    },
+    {
+      "action": "upload_file",
+      "file_name": "terraform-oci-fullstack-windmill.zip"
+    }
+  ]
