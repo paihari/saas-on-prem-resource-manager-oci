@@ -30,9 +30,11 @@ If you don't have the required permissions and quota, contact your tenancy admin
 
 1. Click [![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/paihari/terraform-oci-fullstack-windmill/releases/latest/download/terraform-oci-fullstack-windmill.zip)
 
-
-
     If you aren't already signed in, when prompted, enter the tenancy and user credentials.
+
+**OR**
+
+Download the latest [`terraform-oci-fullstack-windmill.zip`](../../releases/latest/download/terraform-oci-fullstack-windmill.zip) file.
 
 2. Review and accept the terms and conditions.
 
@@ -118,22 +120,3 @@ admin@windmill.dev/changeme
 
 
 
-```
-module "arch-postgresql" {
-  source                        = "github.com/oracle-devrel/terraform-oci-arch-postgresql"
-  tenancy_ocid                  = "<tenancy_ocid>"
-  user_ocid                     = "<user_ocid>"
-  fingerprint                   = "<finger_print>"
-  private_key_path              = "<private_key_path>"
-  region                        = "<oci_region>"
-  availability_domain_name       = "<availability_domain_name>"
-  compartment_ocid              = "<compartment_ocid>"
-  use_existing_vcn              = true # You can inject your own VCN and subnet 
-  create_in_private_subnet      = true # Subnet should be associated with NATGW and proper Route Table.
-  postgresql_vcn                = oci_core_virtual_network.my_vcn.id # Injected VCN
-  postgresql_subnet             = oci_core_subnet.my_private_subnet.id # Injected Private Subnet
-  postgresql_password           = "<password>"
-  postgresql_deploy_hotstandby1 = true # if we want to setup hotstandby1
-  postgresql_deploy_hotstandby2 = true # if we want to setup hotstandby2
-}
-```
