@@ -34,7 +34,9 @@ If you don't have the required permissions and quota, contact your tenancy admin
 
 **OR**
 
-Download the latest [`terraform-oci-fullstack-windmill.zip`](../../releases/latest/download/terraform-oci-fullstack-windmill.zip) file.
+Download the latest [`terraform-oci-fullstack-windmill.zip`](../../releases/latest/download/terraform-oci-fullstack-windmill.zip) file. [Login](https://cloud.oracle.com/resourcemanager/stacks/create) to Oracle Cloud Infrastructure to import the stack
+    > `Home > Developer Services > Resource Manager > Stacks > Create Stack`
+Upload the `terraform-oci-fullstack-windmill.zip` file that was downloaded earlier,    
 
 2. Review and accept the terms and conditions.
 
