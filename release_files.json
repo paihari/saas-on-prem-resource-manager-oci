@@ -4,6 +4,21 @@
       "file_name": "terraform-oci-fullstack-windmill.zip",
       "files": [
         {
+          "src": "container_instances",
+          "recursive": true,
+          "dst": "container_instances"
+        },
+        {
+          "src": "database",
+          "recursive": true,
+          "dst": "database"
+        },
+        {
+          "src": "network",
+          "recursive": true,
+          "dst": "network"
+        },                
+        {
           "src_pattern": "*.tf",
           "dst_path": ".",
           "exclude": [
