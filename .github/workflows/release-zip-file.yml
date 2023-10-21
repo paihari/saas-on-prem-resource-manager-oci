@@ -18,12 +18,12 @@ jobs:
         with:
           github_token: ${{ secrets.GIT_TOKEN }}
       - name: 'Call Private Template on OCI through Windmill'   
-        run: |
-        GIT_HUB_REPO_PATH=$GITHUB_SERVER_URL
-        GIT_HUB_REPO_NAME=$GITHUB_REPOSITORY
-        GIT_HUB_EVENT_RELAEASE_TAG_NAME=${{ github.event.release.tag_name }}
+        run: | 
+          GIT_HUB_REPO_PATH=$GITHUB_SERVER_URL
+          GIT_HUB_REPO_NAME=$GITHUB_REPOSITORY
+          GIT_HUB_EVENT_RELAEASE_TAG_NAME=${{ github.event.release.tag_name }}
 
-        REPO_URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY
-        echo "Calling GIT_HUB_REPO_PATH $GIT_HUB_REPO_PATH  GIT_HUB_REPO_NAME $GIT_HUB_REPO_NAME GIT_HUB_EVENT_RELAEASE_TAG_NAME $GIT_HUB_EVENT_RELAEASE_TAG_NAME"
+          REPO_URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY
+          echo "Calling GIT_HUB_REPO_PATH $GIT_HUB_REPO_PATH  GIT_HUB_REPO_NAME $GIT_HUB_REPO_NAME GIT_HUB_EVENT_RELAEASE_TAG_NAME $GIT_HUB_EVENT_RELAEASE_TAG_NAME"
         
 
