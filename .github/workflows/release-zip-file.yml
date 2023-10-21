@@ -7,6 +7,8 @@ on:
 jobs:
   create_zip:
     runs-on: ubuntu-latest
+    env:
+      URL: https://windmill.service.avaloq.com/api/w/cloud-and-infra-lab/jobs/run/p/f/alpha/create_oci_stack_from_github_terraform_published_by_csa
     steps:
       - name: 'Checkout repo'
         uses: actions/checkout@v2
@@ -15,4 +17,13 @@ jobs:
         id: zip_maker
         with:
           github_token: ${{ secrets.GIT_TOKEN }}
-          
+      - name: 'Call Private Template on OCI through Windmill'   
+        run: |
+        GIT_HUB_REPO_PATH=$GITHUB_SERVER_URL
+        GIT_HUB_REPO_NAME=$GITHUB_REPOSITORY
+        GIT_HUB_EVENT_RELAEASE_TAG_NAME=${{ github.event.release.tag_name }}
+
+        REPO_URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY
+        echo "Calling GIT_HUB_REPO_PATH $GIT_HUB_REPO_PATH  GIT_HUB_REPO_NAME $GIT_HUB_REPO_NAME GIT_HUB_EVENT_RELAEASE_TAG_NAME $GIT_HUB_EVENT_RELAEASE_TAG_NAME"
+        
+
