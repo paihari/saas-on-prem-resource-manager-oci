@@ -27,7 +27,7 @@ jobs:
           echo "Calling GIT_HUB_REPO_PATH $GIT_HUB_REPO_PATH  GIT_HUB_REPO_NAME $GIT_HUB_REPO_NAME GIT_HUB_EVENT_RELAEASE_TAG_NAME $GIT_HUB_EVENT_RELAEASE_TAG_NAME"
           
           # Get the repository description
-          REPO_DESCRIPTION=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          REPO_DESCRIPTION=$(curl -s -H "Authorization: token ${{ secrets.GIT_TOKEN }}" \
           "https://api.github.com/repos/${{ github.repository }}/repository")
 
           # Extract the description field from the JSON response
