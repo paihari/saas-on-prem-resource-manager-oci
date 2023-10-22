@@ -37,7 +37,9 @@ jobs:
 
           # Get the Releasae Path
           RELEASE_DESCRIPTION=$(curl -s -H "Authorization: token ${{ secrets.GIT_TOKEN }}" "https://api.github.com/repos/$GITHUB_REPOSITORY/releases/tags/$GIT_HUB_EVENT_RELAEASE_TAG_NAME")
-           echo "RELEASE_DESCRIPTION $RELEASE_DESCRIPTION"
+          echo "RELEASE_DESCRIPTION $RELEASE_DESCRIPTION"
+          BROWSER_DOWNLOAD_URL=$(echo "$RELEASE_DESCRIPTION" | jq -r '.browser_download_url')
+
 
           
 
