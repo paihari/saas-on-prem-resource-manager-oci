@@ -36,7 +36,7 @@ jobs:
           # Get the Releasae Path
           RELEASE_DESCRIPTION=$(curl -s -H "Authorization: token ${{ secrets.GIT_TOKEN }}" "https://api.github.com/repos/$GITHUB_REPOSITORY/releases/tags/$GIT_HUB_EVENT_RELAEASE_TAG_NAME")
           # Extract the browser_download_url field from the JSON response
-          BROWSER_DOWNLOAD_URL=$(echo "$RELEASE_DESCRIPTION" | jq -r '.browser_download_url')
+          BROWSER_DOWNLOAD_URL=$(echo "$RELEASE_DESCRIPTION" | jq -r '.assets[0].browser_download_url')
           echo "BROWSER_DOWNLOAD_URL $BROWSER_DOWNLOAD_URL"
 
 
