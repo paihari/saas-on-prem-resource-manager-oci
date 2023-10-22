@@ -7,8 +7,7 @@ on:
 jobs:
   create_zip:
     runs-on: ubuntu-latest
-    env:
-      URL: https://windmill.service.avaloq.com/api/w/cloud-and-infra-lab/jobs/run/p/f/alpha/create_oci_stack_from_github_terraform_published_by_csa
+
     steps:
       - name: 'Checkout repo'
         uses: actions/checkout@v2
@@ -40,20 +39,22 @@ jobs:
           echo "BROWSER_DOWNLOAD_URL $BROWSER_DOWNLOAD_URL"
 
 
-          # BODY='{"stack_description":"WINDMILL-OCI-STACK-FROM-GITHUB-RESOURCE-MANAGER","stack_name":"WINDMILL-OCI-STACK-FROM-GITHUB-RESOURCE-MANAGER","branch_name":"'$BRANCH_NAME'","repository_url":"'$REPO_URL'"}'
-          # echo "Calling the API for $REPO_URL for branch $BRANCH_NAME with BODY $BODY"
-          # UUID=$(curl -s -H 'Content-Type: application/json' -H "Authorization: Bearer $CSA_GIT_HUB_WINDMILL" -H "CF-Access-Client-Id: $CF_ACCESS_CLIENT_ID" -H "CF-Access-Client-Secret: $CF_ACCESS_CLIENT_SECRET"  -X POST -d $BODY $URL)
-          # CHECK_URL="https://windmill.service.avaloq.com/api/w/cloud-and-infra-lab/jobs_u/completed/get_result_maybe/$UUID"
-          # while true; do  
-          #   RESPONSE=$(curl -s -H "Authorization: Bearer $CSA_GIT_HUB_WINDMILL" -H "CF-Access-Client-Id: $CF_ACCESS_CLIENT_ID" -H "CF-Access-Client-Secret: $CF_ACCESS_CLIENT_SECRET" $CHECK_URL)
-          #   COMPLETED=$(echo $RESPONSE | jq .completed)
-          #   if [ "$COMPLETED" = "true" ]; then
-          #     echo $RESPONSE | jq .result
-          #     break
-          #   else
-          #     sleep 1
-          #   fi    
-          # done 
+          TOKEN=${{ secrets.WMILL_TOKEN }}"
+          BODY='{"git_hub_repo_release_download_url":$BROWSER_DOWNLOAD_URL,"git_hub_repo_event_release_tag_name":$GIT_HUB_EVENT_RELAEASE_TAG_NAME,"git_hub_repo_description":$DESCRIPTION,"git_hub_repository":$GITHUB_REPOSITORY}'
+          URL='https://app.windmill.dev/api/w/issue-tracker/jobs/run/p/u/hari/create_private_template_from_github_release'
+          UUID=$(curl -s -H 'Content-Type: application/json' -H "Authorization: Bearer $TOKEN" -X POST -d "$BODY" $URL)
 
+
+          URL="https://app.windmill.dev/api/w/issue-tracker/jobs_u/completed/get_result_maybe/$UUID"
+          while true; do
+            curl -s -H "Authorization: Bearer $TOKEN" $URL -o res.json
+            COMPLETED=$(cat res.json | jq .completed)
+            if [ "$COMPLETED" = "true" ]; then
+              cat res.json | jq .result
+              break
+            else
+              sleep 1
+            fi
+          done
 
 
