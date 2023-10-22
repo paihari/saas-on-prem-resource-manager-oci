@@ -39,23 +39,23 @@ jobs:
           echo "BROWSER_DOWNLOAD_URL $BROWSER_DOWNLOAD_URL"
 
 
-          TOKEN=${{ secrets.WMILL_TOKEN }}
-          BODY='{"git_hub_repo_release_download_url":$BROWSER_DOWNLOAD_URL,"git_hub_repo_event_release_tag_name":$GIT_HUB_EVENT_RELAEASE_TAG_NAME,"git_hub_repo_description":$DESCRIPTION,"git_hub_repository":$GITHUB_REPOSITORY}'
-          echo "BODY $BODY"
-          URL='https://app.windmill.dev/api/w/issue-tracker/jobs/run/p/u/hari/create_private_template_from_github_release'
-          UUID=$(curl -s -H 'Content-Type: application/json' -H "Authorization: Bearer $TOKEN" -X POST -d "$BODY" $URL)
+          # TOKEN=${{ secrets.WMILL_TOKEN }}
+          # BODY='{"git_hub_repo_release_download_url":$BROWSER_DOWNLOAD_URL,"git_hub_repo_event_release_tag_name":$GIT_HUB_EVENT_RELAEASE_TAG_NAME,"git_hub_repo_description":$DESCRIPTION,"git_hub_repository":$GITHUB_REPOSITORY}'
+          # echo "BODY $BODY"
+          # URL='https://app.windmill.dev/api/w/issue-tracker/jobs/run/p/u/hari/create_private_template_from_github_release'
+          # UUID=$(curl -s -H 'Content-Type: application/json' -H "Authorization: Bearer $TOKEN" -X POST -d "$BODY" $URL)
 
 
-          URL="https://app.windmill.dev/api/w/issue-tracker/jobs_u/completed/get_result_maybe/$UUID"
-          while true; do
-            curl -s -H "Authorization: Bearer $TOKEN" $URL -o res.json
-            COMPLETED=$(cat res.json | jq .completed)
-            if [ "$COMPLETED" = "true" ]; then
-              cat res.json | jq .result
-              break
-            else
-              sleep 1
-            fi
-          done
+          # URL="https://app.windmill.dev/api/w/issue-tracker/jobs_u/completed/get_result_maybe/$UUID"
+          # while true; do
+          #   curl -s -H "Authorization: Bearer $TOKEN" $URL -o res.json
+          #   COMPLETED=$(cat res.json | jq .completed)
+          #   if [ "$COMPLETED" = "true" ]; then
+          #     cat res.json | jq .result
+          #     break
+          #   else
+          #     sleep 1
+          #   fi
+          # done
 
 
