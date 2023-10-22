@@ -41,6 +41,7 @@ jobs:
 
           TOKEN=${{ secrets.WMILL_TOKEN }}"
           BODY='{"git_hub_repo_release_download_url":$BROWSER_DOWNLOAD_URL,"git_hub_repo_event_release_tag_name":$GIT_HUB_EVENT_RELAEASE_TAG_NAME,"git_hub_repo_description":$DESCRIPTION,"git_hub_repository":$GITHUB_REPOSITORY}'
+          echo "BODY $BODY"
           URL='https://app.windmill.dev/api/w/issue-tracker/jobs/run/p/u/hari/create_private_template_from_github_release'
           UUID=$(curl -s -H 'Content-Type: application/json' -H "Authorization: Bearer $TOKEN" -X POST -d "$BODY" $URL)
 
