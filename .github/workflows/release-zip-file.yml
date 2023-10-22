@@ -24,6 +24,7 @@ jobs:
           GIT_HUB_EVENT_RELAEASE_TAG_NAME=${{ github.event.release.tag_name }}
 
           REPO_URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY
+
           echo "Calling GIT_HUB_REPO_PATH $GIT_HUB_REPO_PATH  GIT_HUB_REPO_NAME $GIT_HUB_REPO_NAME GIT_HUB_EVENT_RELAEASE_TAG_NAME $GIT_HUB_EVENT_RELAEASE_TAG_NAME"
           
           # Get the repository description
@@ -33,4 +34,28 @@ jobs:
           # Extract the description field from the JSON response
           DESCRIPTION=$(echo "$REPO_DESCRIPTION" | jq -r '.description')
           echo "DESCRIPTION $DESCRIPTION"
+
+          # Get the Releasae Path
+          RELEASE_DESCRIPTION=$(curl -s -H "Authorization: token ${{ secrets.GIT_TOKEN }}" "https://api.github.com/repos/$GITHUB_REPOSITORY/releases/tags/$GIT_HUB_EVENT_RELAEASE_TAG_NAME")
+           echo "RELEASE_DESCRIPTION $RELEASE_DESCRIPTION"
+
+          
+
+
+          # BODY='{"stack_description":"WINDMILL-OCI-STACK-FROM-GITHUB-RESOURCE-MANAGER","stack_name":"WINDMILL-OCI-STACK-FROM-GITHUB-RESOURCE-MANAGER","branch_name":"'$BRANCH_NAME'","repository_url":"'$REPO_URL'"}'
+          # echo "Calling the API for $REPO_URL for branch $BRANCH_NAME with BODY $BODY"
+          # UUID=$(curl -s -H 'Content-Type: application/json' -H "Authorization: Bearer $CSA_GIT_HUB_WINDMILL" -H "CF-Access-Client-Id: $CF_ACCESS_CLIENT_ID" -H "CF-Access-Client-Secret: $CF_ACCESS_CLIENT_SECRET"  -X POST -d $BODY $URL)
+          # CHECK_URL="https://windmill.service.avaloq.com/api/w/cloud-and-infra-lab/jobs_u/completed/get_result_maybe/$UUID"
+          # while true; do  
+          #   RESPONSE=$(curl -s -H "Authorization: Bearer $CSA_GIT_HUB_WINDMILL" -H "CF-Access-Client-Id: $CF_ACCESS_CLIENT_ID" -H "CF-Access-Client-Secret: $CF_ACCESS_CLIENT_SECRET" $CHECK_URL)
+          #   COMPLETED=$(echo $RESPONSE | jq .completed)
+          #   if [ "$COMPLETED" = "true" ]; then
+          #     echo $RESPONSE | jq .result
+          #     break
+          #   else
+          #     sleep 1
+          #   fi    
+          # done 
+
+
 
