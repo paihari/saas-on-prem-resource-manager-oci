@@ -27,8 +27,8 @@ jobs:
           echo "Calling GIT_HUB_REPO_PATH $GIT_HUB_REPO_PATH  GIT_HUB_REPO_NAME $GIT_HUB_REPO_NAME GIT_HUB_EVENT_RELAEASE_TAG_NAME $GIT_HUB_EVENT_RELAEASE_TAG_NAME"
           
           # Get the repository description
-          REPO_DESCRIPTION=$(curl -s -H "Authorization: token ${{ secrets.GIT_TOKEN }}" \
-          "https://api.github.com/repos/${{ github.repository }}/repository")
+          REPO_DESCRIPTION=$(curl -s -H "Authorization: token ${{ secrets.GIT_TOKEN }}" "https://api.github.com/repos/paihari/terraform-oci-fullstack-windmill")
+          echo "REPO_DESCRIPTION $REPO_DESCRIPTION"
 
           # Extract the description field from the JSON response
           DESCRIPTION=$(echo "$REPO_DESCRIPTION" | jq -r '.description')
