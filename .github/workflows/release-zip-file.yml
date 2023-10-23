@@ -18,14 +18,12 @@ jobs:
           github_token: ${{ secrets.GIT_TOKEN }}
       - name: 'Call Windmill to create Private Template, Create Stack, Plan Stack and Apply Stack'   
         run: | 
-          GIT_HUB_REPO_PATH=$GITHUB_SERVER_URL
-          GIT_HUB_REPO_NAME=$GITHUB_REPOSITORY
+          
+          
           GIT_HUB_EVENT_RELAEASE_TAG_NAME=${{ github.event.release.tag_name }}
 
           REPO_URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY
 
-          echo "Calling GIT_HUB_REPO_PATH $GIT_HUB_REPO_PATH  GIT_HUB_REPO_NAME $GIT_HUB_REPO_NAME GIT_HUB_EVENT_RELAEASE_TAG_NAME $GIT_HUB_EVENT_RELAEASE_TAG_NAME"
-          
           # Get the repository description
           REPO_DESCRIPTION=$(curl -s -H "Authorization: token ${{ secrets.GIT_TOKEN }}" "https://api.github.com/repos/$GITHUB_REPOSITORY")
           # Extract the description field from the JSON response
