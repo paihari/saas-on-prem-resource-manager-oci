@@ -29,8 +29,8 @@ module "arch-windmill-postgresql" {
 module "container_instances" {
   source           = "./container_instances"
   compartment_ocid = var.compartment_ocid
-  subnet_id = module.network.windmill_subnet_id
-  database_url = module.arch-windmill-postgresql.database_url
+  subnet_id        = module.network.windmill_subnet_id
+  database_url     = module.arch-windmill-postgresql.database_url
 }
 
 
