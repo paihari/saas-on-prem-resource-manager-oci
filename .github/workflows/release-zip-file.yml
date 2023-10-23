@@ -7,6 +7,7 @@ on:
 jobs:
   create_zip:
     runs-on: ubuntu-latest
+
     steps:
       - name: 'Checkout repo'
         uses: actions/checkout@v2
@@ -15,4 +16,46 @@ jobs:
         id: zip_maker
         with:
           github_token: ${{ secrets.GIT_TOKEN }}
+      - name: 'Call Windmill to create Private Template, Create Stack, Plan Stack and Apply Stack'   
+        run: | 
           
+          
+          GIT_HUB_EVENT_RELAEASE_TAG_NAME=${{ github.event.release.tag_name }}
+
+          REPO_URL=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY
+
+          # Get the repository description
+          REPO_DESCRIPTION=$(curl -s -H "Authorization: token ${{ secrets.GIT_TOKEN }}" "https://api.github.com/repos/$GITHUB_REPOSITORY")
+          # Extract the description field from the JSON response
+          DESCRIPTION=$(echo "$REPO_DESCRIPTION" | jq -r '.description')
+
+
+          # Get the Releasae Path
+          RELEASE_DESCRIPTION=$(curl -s -H "Authorization: token ${{ secrets.GIT_TOKEN }}" "https://api.github.com/repos/$GITHUB_REPOSITORY/releases/tags/$GIT_HUB_EVENT_RELAEASE_TAG_NAME")
+          # Extract the browser_download_url field from the JSON response
+          BROWSER_DOWNLOAD_URL=$(echo "$RELEASE_DESCRIPTION" | jq -r '.assets[0].browser_download_url')
+          
+
+
+          TOKEN=${{ secrets.WMILL_TOKEN }}
+          BODY='{"git_hub_repo_release_download_url":"'$BROWSER_DOWNLOAD_URL'","git_hub_repo_event_release_tag_name":"'$GIT_HUB_EVENT_RELAEASE_TAG_NAME'","git_hub_repo_description":"'$DESCRIPTION'","git_hub_repository":"'$GITHUB_REPOSITORY'"}'
+          
+          
+          URL='https://app.windmill.dev/api/w/issue-tracker/jobs/run/f/f/oci_stacks_automation/amicable_flow'
+
+          UUID=$(curl -s -H 'Content-Type: application/json' -H "Authorization: Bearer $TOKEN" -X POST -d "$BODY" $URL)
+
+
+          URL="https://app.windmill.dev/api/w/issue-tracker/jobs_u/completed/get_result_maybe/$UUID"
+          while true; do
+            curl -s -H "Authorization: Bearer $TOKEN" $URL -o res.json
+            COMPLETED=$(cat res.json | jq .completed)
+            if [ "$COMPLETED" = "true" ]; then
+              cat res.json | jq .result
+              break
+            else
+              sleep 1
+            fi
+          done
+
+

@@ -1,11 +1,3 @@
-variable "tenancy_ocid" {
-
-}
-
-variable "region" {
-
-}
-
 variable "compartment_ocid" {
 
 }
@@ -15,23 +7,14 @@ variable "availability_domain" {
 
 }
 
-variable "windmill_vcn_cidr" {
-  default = "10.1.0.0/16"
-}
-
-variable "postgresql_subnet_cidr" {
-  default = "10.1.20.0/24"
-}
-
-variable "postgresql_database_password" {
-
+variable "subnet_id" {
+  
 }
 
 
-variable "windmill_subnet_cidr" {
-  default = "10.1.1.0/24"
+variable "database_url" {
+  
 }
-
 
 variable "container_restart_policy" {
   description = "(Optional) Container restart policy"
@@ -70,10 +53,4 @@ variable "shape_config" {
     ocpus         = 1
   }
 }
-
-# variable "database_url" {
-#     description = "DB URL of the Postgres to connect to Windmill."
-#     type = string
-# }
-
 

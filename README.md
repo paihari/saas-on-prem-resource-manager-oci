@@ -26,6 +26,38 @@ For details of the DB architecture, see [_PostgreSQL database_](https://docs.ora
 
 If you don't have the required permissions and quota, contact your tenancy administrator. See [Policy Reference](https://docs.cloud.oracle.com/en-us/iaas/Content/Identity/Reference/policyreference.htm), [Service Limits](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/servicelimits.htm), [Compartment Quotas](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/resourcequotas.htm).
 
+## Deploy Using Automation Framework
+The deployment of the Windmill application is completely automated with One Click option in GitHub, the automation is possible under the hood using
+
+- GitHub Release
+- GitHub Action
+- Hosted Windmill Services
+- OCI Resource Manager Private Template
+- OCI Resource Manager Stacks Plan
+- OCI Resource Manager Stacks Apply
+
+### Super Click
+
+1. Got to [Releases]: https://github.com/paihari/terraform-oci-fullstack-windmill/releases/new
+2. Choose a incremental Tag, with Target: main
+3. Give a Title and Describle the release, Use Generate Release notes as compliment
+4. Leave the default options
+5. Click Publish Release
+6. Done
+
+### How to Trace
+
+
+**Git Hub Release Page**
+![Git Hub Release](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
+**OCI Private Template Page**
+![OCI Private Template ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_9.png)
+**OCI Stack Page**
+![OCI Stack ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_10.png)
+**OCI Job Plan/Apply**
+![Job Plan ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_11.png)
+
+
 ## Deploy Using Oracle Resource Manager
 
 1. Click [![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/paihari/terraform-oci-fullstack-windmill/releases/latest/download/terraform-oci-fullstack-windmill.zip)
