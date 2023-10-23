@@ -46,12 +46,16 @@ The deployment of the Windmill application is completely automated with One Clic
 6. Done
 
 **How to Trace**
-1. ![Git Hub Release](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
-2. ![OCI Private Template ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
-3. ![OCI Stack ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
-4. ![Job Plan ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
-5. ![Job Apply ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
-
+Git Hub Release Page
+![Git Hub Release](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
+OCI Private Template Page
+![OCI Private Template ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
+OCI Stack Page
+![OCI Stack ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
+OCI Job Plan
+![Job Plan ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
+OCI Job Apply
+![Job Apply ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
 
 
 ## Deploy Using Oracle Resource Manager
