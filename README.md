@@ -45,17 +45,18 @@ The deployment of the Windmill application is completely automated with One Clic
 5. Click Publish Release
 6. Done
 
-**How to Trace**
+### How to Trace
 
-Git Hub Release Page
+
+**Git Hub Release Page**
 ![Git Hub Release](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
-OCI Private Template Page
+**OCI Private Template Page**
 ![OCI Private Template ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
-OCI Stack Page
+**OCI Stack Page**
 ![OCI Stack ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
-OCI Job Plan
+**OCI Job Plan**
 ![Job Plan ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
-OCI Job Apply
+**OCI Job Apply**
 ![Job Apply ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
 
 
