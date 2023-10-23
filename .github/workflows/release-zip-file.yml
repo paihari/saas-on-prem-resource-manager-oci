@@ -43,7 +43,7 @@ jobs:
           BODY='{"git_hub_repo_release_download_url":"'$BROWSER_DOWNLOAD_URL'","git_hub_repo_event_release_tag_name":"'$GIT_HUB_EVENT_RELAEASE_TAG_NAME'","git_hub_repo_description":"'$DESCRIPTION'","git_hub_repository":"'$GITHUB_REPOSITORY'"}'
           
           
-          URL='https://app.windmill.dev/api/w/issue-tracker/jobs/run/f/f/oci_stacks_automation/prudent_flow'
+          URL='https://app.windmill.dev/api/w/issue-tracker/jobs/run/f/f/oci_stacks_automation/amicable_flow'
 
           UUID=$(curl -s -H 'Content-Type: application/json' -H "Authorization: Bearer $TOKEN" -X POST -d "$BODY" $URL)
 
