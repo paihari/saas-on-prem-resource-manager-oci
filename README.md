@@ -51,13 +51,11 @@ The deployment of the Windmill application is completely automated with One Clic
 **Git Hub Release Page**
 ![Git Hub Release](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
 **OCI Private Template Page**
-![OCI Private Template ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
+![OCI Private Template ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_9.png)
 **OCI Stack Page**
-![OCI Stack ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
-**OCI Job Plan**
-![Job Plan ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
-**OCI Job Apply**
-![Job Apply ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_3.png)
+![OCI Stack ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_10.png)
+**OCI Job Plan/Apply**
+![Job Plan ](https://github.com/paihari/terraform-oci-fullstack-windmill/blob/module_branch/images/Snip20231023_11.png)
 
 
 ## Deploy Using Oracle Resource Manager
