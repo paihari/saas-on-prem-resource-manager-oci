@@ -26,13 +26,6 @@ variableGroups:
    
 
 variables:
-  tenancy_ocid:
-    type: string
-    required: true
-    visible: true
-    title: Region
-    description: "Tenancy where you want to deploy the resources defined by this stack."
-
   region:
     type: oci:identity:region:name
     required: true
