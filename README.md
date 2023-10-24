@@ -26,7 +26,7 @@ For details of the DB architecture, see [_PostgreSQL database_](https://docs.ora
 
 If you don't have the required permissions and quota, contact your tenancy administrator. See [Policy Reference](https://docs.cloud.oracle.com/en-us/iaas/Content/Identity/Reference/policyreference.htm), [Service Limits](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/servicelimits.htm), [Compartment Quotas](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/resourcequotas.htm).
 
-## Deploy Using Automation Framework
+## Deploy Using Automation Framework with Version Control
 The deployment of the Windmill application is completely automated with One Click option in GitHub, the automation is possible under the hood using
 
 - GitHub Release
