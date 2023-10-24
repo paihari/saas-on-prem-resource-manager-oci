@@ -36,7 +36,7 @@ The deployment of the Windmill application is completely automated with One Clic
 - OCI Resource Manager Stacks Plan
 - OCI Resource Manager Stacks Apply
 
-### Super Click
+### One Click
 
 1. Got to [Releases]: https://github.com/paihari/terraform-oci-fullstack-windmill/releases/new
 2. Choose a incremental Tag, with Target: main
