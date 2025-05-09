@@ -1,4 +1,4 @@
-# Windmill Self Hosting on OCI using Terraform and OCI Resource Manager
+# Windmill Self Hosting on OCI using Terraform and OCI Resource Manager 
 
 Windmill is an open-source low code builder to build all tools (endpoints, workflows, UIs) through the combination of code (in Typescript, Python, Go, Bash, SQL or any docker image) . It embeds all-in-one:
 
